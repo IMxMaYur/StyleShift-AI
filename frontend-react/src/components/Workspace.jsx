@@ -57,7 +57,8 @@ export default function Workspace({ selectedModel, onError }) {
     form.append('model', selectedModel)
 
     try {
-      const res  = await fetch('/api/transform', { method: 'POST', body: form })
+      const baseUrl = import.meta.env.VITE_API_URL || '/api'
+      const res  = await fetch(`${baseUrl}/transform`, { method: 'POST', body: form })
       const data = await res.json()
 
       if (!res.ok) {

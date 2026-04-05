@@ -18,7 +18,8 @@ export default function App() {
   useEffect(() => {
     const check = async () => {
       try {
-        const res  = await fetch('/api/health', { signal: AbortSignal.timeout(4000) })
+        const baseUrl = import.meta.env.VITE_API_URL || '/api'
+        const res  = await fetch(`${baseUrl}/health`, { signal: AbortSignal.timeout(4000) })
         const data = await res.json()
         setServerStatus('online')
         setServerInfo(data)
@@ -33,7 +34,8 @@ export default function App() {
   useEffect(() => {
     const load = async () => {
       try {
-        const res  = await fetch('/api/models')
+        const baseUrl = import.meta.env.VITE_API_URL || '/api'
+        const res  = await fetch(`${baseUrl}/models`)
         const data = await res.json()
         setModels(data.models || [])
       } catch {

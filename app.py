@@ -180,5 +180,6 @@ if __name__ == "__main__":
         load_model("horse2zebra")
     except Exception as e:
         print(f"[WARN] Could not preload model: {e}")
-    print("[INFO] Starting server at http://localhost:5000")
-    app.run(host="0.0.0.0", port=5000, debug=False)
+    port = int(os.environ.get("PORT", 7860))
+    print(f"[INFO] Starting server at http://localhost:{port}")
+    app.run(host="0.0.0.0", port=port, debug=False)
