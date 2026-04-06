@@ -2,6 +2,7 @@ import { useState, useRef, useCallback, useEffect } from 'react'
 import DropZone from './DropZone'
 import ResultView from './ResultView'
 import LoadingOverlay from './LoadingOverlay'
+import { API_BASE } from '../constants'
 
 const LOADER_MESSAGES = [
   'Initialising neural network…',
@@ -57,8 +58,7 @@ export default function Workspace({ selectedModel, onError }) {
     form.append('model', selectedModel)
 
     try {
-      const baseUrl = import.meta.env.VITE_API_URL || '/api'
-      const res  = await fetch(`${baseUrl}/transform`, { method: 'POST', body: form })
+      const res  = await fetch(`${API_BASE}/transform`, { method: 'POST', body: form })
       const data = await res.json()
 
       if (!res.ok) {

@@ -6,6 +6,7 @@ import Workspace from './components/Workspace'
 import HowItWorks from './components/HowItWorks'
 import ModelsSection from './components/ModelsSection'
 import Toast from './components/Toast'
+import { API_BASE } from './constants'
 
 export default function App() {
   const [serverStatus, setServerStatus] = useState('connecting') // 'online'|'offline'|'connecting'
@@ -18,8 +19,7 @@ export default function App() {
   useEffect(() => {
     const check = async () => {
       try {
-        const baseUrl = import.meta.env.VITE_API_URL || '/api'
-        const res  = await fetch(`${baseUrl}/health`, { signal: AbortSignal.timeout(4000) })
+        const res  = await fetch(`${API_BASE}/health`, { signal: AbortSignal.timeout(4000) })
         const data = await res.json()
         setServerStatus('online')
         setServerInfo(data)
@@ -34,8 +34,7 @@ export default function App() {
   useEffect(() => {
     const load = async () => {
       try {
-        const baseUrl = import.meta.env.VITE_API_URL || '/api'
-        const res  = await fetch(`${baseUrl}/models`)
+        const res  = await fetch(`${API_BASE}/models`)
         const data = await res.json()
         setModels(data.models || [])
       } catch {
