@@ -268,11 +268,52 @@
 .heart { color: var(--pink); }
 
 /* ── Responsive ──────────────────────────────── */
+@media(max-width:900px){
+  .workspace-wrap, .hero { padding-left: 16px; padding-right: 16px; }
+}
+
+@media(max-width:768px){
+  .navbar { padding: 14px 24px; }
+  .hero { padding: 120px 16px 48px; }
+  .upload-section { padding: 40px 24px; }
+  .result-section { padding: 24px; }
+  .steps-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+}
+
 @media(max-width:600px){
-  .navbar{padding:14px 20px}
-  .hero{padding:110px 16px 48px}
-  .upload-section{padding:32px 20px}
-  .drop-zone{padding:40px 20px}
-  .result-section{padding:20px 16px 16px}
-  .action-row{flex-direction:column}
+  .navbar { padding: 12px 16px; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+  .nav-title { font-size: 18px; }
+  .hero { padding: 110px 16px 40px; }
+  .hero-badge { margin-bottom: 20px; font-size: 12px; padding: 6px 14px;}
+  .hero-title { font-size: clamp(32px, 8vw, 42px); margin-bottom: 16px; letter-spacing: -1px; }
+  .hero-sub { font-size: 14px; margin-bottom: 30px; }
+  .pill { padding: 7px 14px; font-size: 12px; }
+  .workspace-wrap { padding: 0 16px 60px; }
+  .upload-section { padding: 24px 16px; }
+  .drop-zone { padding: 32px 16px; }
+  .drop-icon { font-size: 40px; margin-bottom: 16px; }
+  .drop-title { font-size: 18px; }
+  .btn-browse { width: 100%; padding: 12px; }
+  .preview-strip { flex-direction: column; align-items: stretch; text-align: center; gap: 16px; }
+  .preview-thumb { margin: 0 auto; width: 64px; height: 64px; }
+  .btn-transform { width: 100%; padding: 14px; }
+  .result-section { padding: 20px 16px 16px; }
+  .action-row { flex-direction: column; gap: 10px; }
+  .btn-primary, .btn-secondary, .btn-accent { min-width: 100%; padding: 14px; }
+  .info-bar { flex-direction: column; gap: 8px; }
+  .info-chip { width: 100%; justify-content: center; padding: 10px; }
+  .compare-label { font-size: 10px; padding: 4px 8px; top: 8px; }
+  .label-left { left: 8px; }
+  .label-right { right: 8px; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .models-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer { padding: 30px 16px; }
+}
+
+@media(max-width:400px){
+  .navbar { justify-content: center; }
+  .models-grid { grid-template-columns: 1fr; }
+  .hero-title { font-size: clamp(28px, 10vw, 36px); }
+  .drop-zone { padding: 24px 12px; }
+  .compare-label { display: none; } /* Hide compare labels on very small screens since they overlap */
 }
