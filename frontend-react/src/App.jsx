@@ -8,6 +8,21 @@ import ModelsSection from './components/ModelsSection'
 import Toast from './components/Toast'
 import { API_BASE } from './constants'
 
+// ── Models shown in the UI ────────────────────────────────────────────────────
+// To re-enable a hidden model, just add its key back to this list.
+const VISIBLE_MODELS = [
+  'horse2zebra',
+  'zebra2horse',
+  'apple2orange',
+  'orange2apple',
+  'summer2winter_yosemite',
+  'winter2summer_yosemite',
+  // 'map2sat',
+  // 'sat2map',
+  // 'cityscapes_label2photo',
+  // 'facades_label2photo',
+]
+
 export default function App() {
   const [serverStatus, setServerStatus] = useState('connecting') // 'online'|'offline'|'connecting'
   const [serverInfo, setServerInfo]     = useState(null)
@@ -36,7 +51,9 @@ export default function App() {
       try {
         const res  = await fetch(`${API_BASE}/models`)
         const data = await res.json()
-        setModels(data.models || [])
+        const all  = data.models || []
+        // Filter to only the models we want visible in the UI
+        setModels(all.filter(m => VISIBLE_MODELS.includes(m.name)))
       } catch {
         // silently fail; models will be empty
       }

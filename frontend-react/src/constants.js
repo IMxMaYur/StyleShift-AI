@@ -14,6 +14,11 @@ export const MODEL_META = {
   orange2apple:            { emoji: "🍊→🍎", label: "Orange → Apple" },
   summer2winter_yosemite:  { emoji: "☀️→❄️",  label: "Summer → Winter" },
   winter2summer_yosemite:  { emoji: "❄️→☀️",  label: "Winter → Summer" },
+  // ── Hidden models (uncomment to re-enable on the frontend UI) ────────────────
+  // map2sat:                 { emoji: "🗺️→🛰️", label: "Map → Satellite" },
+  // sat2map:                 { emoji: "🛰️→🗺️", label: "Satellite → Map" },
+  // cityscapes_label2photo:  { emoji: "🏷️→🏙️", label: "Label → Photo (Cityscapes)" },
+  // facades_label2photo:     { emoji: "🏷️→🏠", label: "Label → Facades" },
 };
 
 export const getMeta = (name) =>
