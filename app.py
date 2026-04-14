@@ -27,6 +27,15 @@ print(f"[INFO] Running on device: {DEVICE}")
 # ── lazy-load model cache ─────────────────────────────────────────────────────
 _model_cache = {}
 
+# ── Add this section after line 28 (after _model_cache = {}) ────────────────
+ALLOWED_MODELS = {
+    "horse2zebra",
+    "zebra2horse",
+    "apple2orange",
+    "orange2apple",
+    "summer2winter_yosemite",
+    "winter2summer_yosemite",
+}
 
 def load_model(name: str):
     """Load a CycleGAN generator model by checkpoint name (cached)."""
